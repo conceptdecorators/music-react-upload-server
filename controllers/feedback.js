@@ -1,6 +1,6 @@
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-// console.log(process.env.EMAIL_TO);
+// console.log(process.env.SENDGRID_API_KEY);
 
 exports.emailFeedback = (req, res) => {
   // console.log(req.body);
@@ -13,7 +13,7 @@ exports.emailFeedback = (req, res) => {
     artist,
     songTitle,
     genre,
-    startdate,
+    date,
     label,
   } = req.body;
   const emailData = {
