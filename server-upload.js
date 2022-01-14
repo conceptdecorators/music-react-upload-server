@@ -15,14 +15,20 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 // app.use(express.json());
-app.use(cors());
+var corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 
 // routes
 app.use("/api", feedbackRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Server is running")
-})
+  res.send("Server is running");
+});
 
 // app.get("*", (req, res) => {
 //   res.sendFile(path.resolve(__dirname + "/../client/build/index.html"));
