@@ -17,8 +17,8 @@ exports.emailFeedback = (req, res) => {
     label,
   } = req.body;
   const emailData = {
-    to: process.env.EMAIL_TO,
-    from: email,
+    to: email,
+    from: process.env.EMAIL_FROM,
     subject: "Feedback form",
     html: `
             <h1>Customer Feedback Form</h1>
@@ -32,10 +32,7 @@ exports.emailFeedback = (req, res) => {
             <h2>Sender Song Release Date: ${date}</h2>
             <h2>Sender Genre: ${genre}</h2>
             
-            <br />
-            ${uploadedFiles.map((f) => {
-              return `<img src="${f.secure_url}" alt="${f.original_filename}" style="width:50%;overflow:hidden;padding:50px;" />`;
-            })}
+      
             <hr />
             <p>https://zilahmusicpublishing.com</p>
         `,
